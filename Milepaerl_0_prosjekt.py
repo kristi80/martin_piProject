@@ -104,6 +104,172 @@ def martin():
     compass = sense.get_compass()
     return compass
 
+def funksjonen_til_kristian():
+  r = (255, 0, 0)
+  g = (0, 255, 0)
+  b = (0, 0, 255)
+  
+  c = (0, 255, 255)
+  m = (255, 0, 255)
+  y = (0, 255, 255)
+  k = (0, 0, 0)
+  w = (255, 255, 255)
+  
+  avalible_colors = [r, g, b, c, m, y, k]
+  sense.set_rotation(90)
+  
+  myImage = [
+    k, k, r, r, r, r, y, y,
+    k, m, k, k, k, k, g, y,
+    r, k, b, b, b, b, k, r,
+    r, k, b, m, g, b, k, r,
+    r, k, b, g, m, b, k, r,
+    r, k, b, b, b, b, k, r,
+    y, g, k, k, k, k, m, k,
+    y, y, r, r, r, r, k, k,
+    ]
+  myImage2 = [
+    w, k, r, r, r, r, y, y,
+    w, m, k, k, k, k, g, y,
+    w, k, b, b, b, b, k, r,
+    w, k, b, m, g, b, k, r,
+    w, k, b, g, m, b, k, r,
+    w, k, b, b, b, b, k, r,
+    w, g, k, k, k, k, m, k,
+    w, y, r, r, r, r, k, k,
+    ]
+  myImage3 = [
+    w, w, r, r, r, r, y, y,
+    w, w, k, k, k, k, g, y,
+    w, w, b, b, b, b, k, r,
+    w, w, b, m, g, b, k, r,
+    w, w, b, g, m, b, k, r,
+    w, w, b, b, b, b, k, r,
+    w, w, k, k, k, k, m, k,
+    w, w, r, r, r, r, k, k,
+    ]
+  myImage4 = [
+    w, w, w, r, r, r, y, y,
+    w, w, w, k, k, k, g, y,
+    w, w, w, b, b, b, k, r,
+    w, w, w, m, g, b, k, r,
+    w, w, w, g, m, b, k, r,
+    w, w, w, b, b, b, k, r,
+    w, w, w, k, k, k, m, k,
+    w, w, w, r, r, r, k, k,
+    ]
+  myImage5 = [
+    w, w, w, w, r, r, y, y,
+    w, w, w, w, k, k, g, y,
+    w, w, w, w, b, b, k, r,
+    w, w, w, w, g, b, k, r,
+    w, w, w, w, m, b, k, r,
+    w, w, w, w, b, b, k, r,
+    w, w, w, w, k, k, m, k,
+    w, w, w, w, r, r, k, k,
+    ]
+    
+  #--------------Bilder for oppover:  
+  myImageUp = [
+    k, k, r, r, r, r, y, y,
+    k, m, k, k, k, k, g, y,
+    r, k, b, b, b, b, k, r,
+    r, k, b, m, g, b, k, r,
+    r, k, b, g, m, b, k, r,
+    r, k, b, b, b, b, k, r,
+    y, g, k, k, k, k, m, k,
+    y, y, r, r, r, r, k, k,
+    ]
+  myImageUp2 = [
+    k, k, r, r, r, r, y, w,
+    k, m, k, k, k, k, g, w,
+    r, k, b, b, b, b, k, w,
+    r, k, b, m, g, b, k, w,
+    r, k, b, g, m, b, k, w,
+    r, k, b, b, b, b, k, w,
+    y, g, k, k, k, k, m, w,
+    y, y, r, r, r, r, k, w,
+    ]
+  myImageUp3 = [
+    k, k, r, r, r, r, w, w,
+    k, m, k, k, k, k, w, w,
+    r, k, b, b, b, b, w, w,
+    r, k, b, m, g, b, w, w,
+    r, k, b, g, m, b, w, w,
+    r, k, b, b, b, b, w, w,
+    y, g, k, k, k, k, w, w,
+    y, y, r, r, r, r, w, w,
+    ]
+  myImageUp4 = [
+    k, k, r, r, r, w, w, w,
+    k, m, k, k, k, w, w, w,
+    r, k, b, b, b, w, w, w,
+    r, k, b, m, g, w, w, w,
+    r, k, b, g, m, w, w, w,
+    r, k, b, b, b, w, w, w,
+    y, g, k, k, k, w, w, w,
+    y, y, r, r, r, w, w, w,
+    ]
+  myImageUp5 = [
+    k, k, r, r, w, w, w, w,
+    k, m, k, k, w, w, w, w,
+    r, k, b, b, w, w, w, w,
+    r, k, b, m, w, w, w, w,
+    r, k, b, g, w, w, w, w,
+    r, k, b, b, w, w, w, w,
+    y, g, k, k, w, w, w, w,
+    y, y, r, r, w, w, w, w,
+    ]
+    
+  
+  
+  sense.set_imu_config(True, True, True)
+  
+  
+  def getIMUValues():
+    # Gather all three sensor values from IMU
+    compass = sense.get_compass()
+    gyro = sense.get_gyroscope()
+    accel = sense.get_accelerometer()
+    
+  
+    return {"compass":compass, "accel":accel, "gyro":gyro}
+    
+  diff = 5
+  var = 270
+  
+  t_end = time.time() + 10
+
+  while time.time() < t_end:
+    IMUValues = getIMUValues()
+    compass = round(IMUValues["compass"])
+    accel = (IMUValues["accel"])
+    gyro = (IMUValues["gyro"]["pitch"])
+    print(gyro)
+    #nedover rot
+    if gyro <= (90 + var) and gyro > (80 + var):
+      sense.set_pixels(myImageUp)
+    elif gyro <= (80 + var) and gyro > (75 + var):
+      sense.set_pixels(myImageUp2)
+    elif gyro <= (80 - diff + var) and gyro > (75 - diff + var):
+      sense.set_pixels(myImageUp3)
+    elif gyro <= (80 - diff*2 + var) and gyro > (75 - diff*2 + var):
+      sense.set_pixels(myImageUp4)
+    elif gyro <= (80 - diff*3 + var) and gyro > (75 - diff*3 + var):
+      sense.set_pixels(myImageUp5)
+    #oppover rot
+    elif gyro >= (0) and gyro < (10):
+      sense.set_pixels(myImage)
+    elif gyro >= (10) and gyro < (15):
+      sense.set_pixels(myImage2)
+    elif gyro >= (10 + diff) and gyro < (15 + diff):
+      sense.set_pixels(myImage3)
+    elif gyro >= (10 + diff*2) and gyro < (15 + diff*2):
+      sense.set_pixels(myImage4)
+    elif gyro >= (10 + diff*3) and gyro < (15 + diff*3):
+      sense.set_pixels(myImage5)
+    else:
+      sense.clear()
 
 def main():
     with open("sensor_values.csv", "w") as csvfile:
@@ -115,7 +281,7 @@ def main():
             #andre()
             humidity = gunnar()
             #knut_ola()
-            #kristian()
+            funksjonen_til_kristian()
             compass = martin()
             
             # Sensor values to be written in sensor_values.csv
