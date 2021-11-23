@@ -89,7 +89,16 @@ def calculate_car_position(imu_values):
         if imu_values in range(number, number+5):
             return imu_values/2.5
 
-
+def draw_fuel(x): 
+    # tegner fuel, range 0 -> 8 hvor 0 er max, 8 er null fuel
+    i = 7
+    u = 0
+        while 1 + i > x:
+            # tegner fra rød til grønn farge
+            sense.set_pixel(i, 0, (255-u, u, 0))
+            i -= 1
+            u += 36
+        
 def debug_print(buffer):
     os.system("clear")
     for line in buffer:
@@ -149,7 +158,11 @@ def main():
         if iterator % GATE_FREQUENCY == 0:
             gate_x_pos = get_gate_pos()
             gate_y_start = iterator
-
+        
+        #TODO: legg til en funksjon som sakte men sikkert tømmer fuel_tanken
+        # det kan f.eks skje hver 3 gate du kjører forbi (dette må testes)
+        # dette må være uavhenig, slik at vi bare endrer en global variabel
+        # slik at fuel-tønner også kan virke på fuel_tanken
 
         #TODO: legg til fuel-tønner som dukker opp etter FUEL_FREQUENCY
         # antall iterasjoner. Når du treffer fuel fyller du opp baren
